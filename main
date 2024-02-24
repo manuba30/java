@@ -1,0 +1,46 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int size = 0;
+        try {
+            System.out.println("Enter the size of the array:");
+            size = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter an integer value.");
+            return; // Exit the program if input is invalid
+        }
+
+        double[] array = new double[size];
+        for(int i = 0; i < size ; i++) {
+            try {
+                System.out.println("Enter element " + (i + 1) + " of the array:");
+                array[i] = scanner.nextDouble();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a numeric value.");
+                return; // Exit the program if input is invalid
+            }
+        }
+
+        System.out.println("Elements of the array:");
+        for(int i = 0; i < size ; i++) {
+            System.out.println(array[i]);
+        }
+
+        System.out.println("Press 'q' to display the table:");
+        String response = scanner.next();
+
+        if (response.equals("q")) {
+            // Display the table
+            System.out.println("Table:");
+            for(int i = 0; i < size ; i++) {
+                System.out.print(array[i] + "\t");
+            }
+            System.out.println();
+        } else {
+            System.out.println("Invalid response. Continuing the program.");
+        }
+    }
+}
